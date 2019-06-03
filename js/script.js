@@ -43,7 +43,32 @@ class Board{
     }
 }
 
-
+class BoardStorage{
+    constructor (){
+        
+    }
+    List(){
+        
+    }
+    clear(){
+        
+    }
+    create(){
+        
+    }
+    get(id){
+        
+    }
+    update(id,date){
+        
+    }
+    get(id){
+        
+    }
+    delete(id){
+        
+    }
+}
 
 function getBoards(){
 //    for (key in boardList)
@@ -72,7 +97,8 @@ function getActiveList(){
 }
 
 function saveApp(){
-    localStorage.setItem('cardList', cardList);
+//    localStorage.setItem('cardList', JSON.stringify(cardList));
+//    localStorage.setItem('boardList', JSON.stringify(boardList));
 }
 
 function render() {
@@ -134,9 +160,16 @@ function render() {
     })
 };
 
+//инициализация списка карточек
 var cardList = [];
+//if (localStorage.getItem('cardList')){
+//    cardList = JSON.parse(localStorage.getItem('cardList'));
+//}
 var activeCardList = [];
 var boardList = [];
+//if (localStorage.getItem('boardList')){
+//    boardList = JSON.parse(localStorage.getItem('boardList'));
+//}
 var archive= [];
 
 
@@ -176,6 +209,13 @@ $( document ).ready(function(){
    $('.custom_input').click(function() {
      $(this).closest('.select').find('.select_list').toggleClass('hidden');
    })
+    
+       $('.clearAll').click(function() {
+           localStorage.clear();
+           cardList = [];
+           boardList = [];
+           render();
+   })
 
    $('.close-btn').click(function(){
        $(this).closest('.modal_form').addClass('hidden');
@@ -191,5 +231,11 @@ $( document ).ready(function(){
         $(this).closest('.modal_form').addClass('hidden');
         render();
    })
+    
+    $.get('http://localhost:3000/boards', function(data){
+        boardList = data;
+        render();
+    });
+    
 
 });

@@ -151,6 +151,16 @@ h5{
   left: 10px;
   top: 10px;
 }
+.fix_btn2{
+  cursor: pointer;
+  background: #559ef4;
+  color: #fff;
+  padding: 10px;
+  position: fixed;
+  border-radius: 5px;
+  left: 200px;
+  top: 10px;
+}
 .modal_form{
   position: fixed;
   width: 400px;
